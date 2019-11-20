@@ -36,11 +36,6 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
 	</dependencies>
 
 	<build>
@@ -66,35 +61,6 @@
 							<port>${app.port}</port>
 							<reset>false</reset>
 							<skip>${skip.dump}</skip>
-						</configuration>
-					</execution>
-					<execution>
-						<id>merge-test-data</id>
-						<goals>
-							<goal>merge</goal>
-						</goals>
-						<configuration>
-							<destFile>target/jacoco-it.exec</destFile>
-							<skip>${skip.dump}</skip>
-							<fileSets>
-								<fileSet implementation="org.apache.maven.shared.model.fileset.FileSet">
-									<directory>target</directory>
-									<includes>
-										<include>*it*.exec</include>
-									</includes>
-								</fileSet>
-							</fileSets>
-						</configuration>
-					</execution>
-					<execution>
-						<id>jacoco-integration-initialize</id>
-						<phase>pre-integration-test</phase>
-						<goals>
-							<goal>prepare-agent-integration</goal>
-						</goals>
-						<configuration>
-							<propertyName>failsafe.argLine</propertyName>
-							<destFile>target/jacoco-it-base.exec</destFile>
 						</configuration>
 					</execution>
 				</executions>
